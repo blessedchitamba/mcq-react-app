@@ -29,12 +29,8 @@ export default function AnswerForm(){
         {id: 2, answer_option: "C", question: "question_1", text: "Data Structures", voter_count: 3},
         {id: 3, answer_option: "D", question: "question_1", text: "I have no idea", voter_count: 1}
     ]);
-    // const options = [
-    //     {id: 0, answer_option: "A", question: "question_1", text: "Inheritance", voter_count: 2},
-    //     {id: 1, answer_option: "B", question: "question_1", text: "Polymorphism", voter_count: 4},
-    //     {id: 2, answer_option: "C", question: "question_1", text: "Data Structures", voter_count: 3},
-    //     {id: 3, answer_option: "D", question: "question_1", text: "I have no idea", voter_count: 1}
-    // ];
+    
+    const[checked, setChecked] = useState(false);
 
     const poll_results = options.map(o => {return o.voter_count;});
     const data = {
@@ -91,6 +87,7 @@ export default function AnswerForm(){
                             }
                         })
         setOptions(next_options);
+        setChecked(true);
     }
 
     const elements = options.map(option =>{
@@ -102,16 +99,22 @@ export default function AnswerForm(){
                 onClick={()=>onChecked(option.answer_option)}
                 />
     });
+
+    let toRender;
+    if(checked){
+        toRender = <Bar data={data} options={chart_options} />;
+    } else {
+        toRender =<>
+                    <legend>Select the correct answer</legend>
+                    {elements}
+                </> 
+    }
     
     return (
         <>
             <fieldset>
-                <legend>Select the correct answer</legend>
-                    {elements}
+                {toRender}
             </fieldset>
-            <div>
-                <Bar data={data} options={chart_options} />
-            </div>
         </>
     );
 }
