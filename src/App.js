@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import AnswerForm from './AnswerForm.js';
+import AnswerSheet from './AnswerSheet';
 
 function App() {
   return (
     <div className="App">
-      <AnswerForm />
+      <AnswerSheet />
     </div>
   );
 }

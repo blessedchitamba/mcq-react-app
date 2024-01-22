@@ -22,14 +22,8 @@ import {
     BarController
   );
 
-export default function AnswerForm(){
-    const[options, setOptions] = useState([
-        {id: 0, answer_option: "A", question: "question_1", text: "Inheritance", voter_count: 2},
-        {id: 1, answer_option: "B", question: "question_1", text: "Polymorphism", voter_count: 4},
-        {id: 2, answer_option: "C", question: "question_1", text: "Data Structures", voter_count: 3},
-        {id: 3, answer_option: "D", question: "question_1", text: "I have no idea", voter_count: 1}
-    ]);
-    
+export default function AnswerForm({question_options, question_number}){
+    const[options, setOptions] = useState(question_options); 
     const[checked, setChecked] = useState(false);
 
     const poll_results = options.map(o => {return o.voter_count;});
@@ -69,7 +63,12 @@ export default function AnswerForm(){
                 display: false
               }
             }
-          }
+          },
+        plugins: {
+            title: {
+                display: false
+            }
+        }
       }
 
     function onChecked(i){
@@ -93,7 +92,7 @@ export default function AnswerForm(){
     const elements = options.map(option =>{
         return <AnswerOption 
                 id={option.answer_option}
-                name={option.question}
+                name={question_number}
                 value={option.answer_option}
                 text={option.text} 
                 onClick={()=>onChecked(option.answer_option)}
