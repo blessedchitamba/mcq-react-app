@@ -44,6 +44,43 @@ fieldset {
   width: 400px;
   height: 150px;
   margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+#title {
+  text-align: center;
+  color: #00539f;
+  font-family: "Open Sans", sans-serif;
+  font-size: 40px;
+  padding-top: 20px;
+  background-color: #f2f2f2;
+}
+
+#buttonDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+#submit {
+  display: inline-block;
+  background-color: #38d8bd;
+  padding: 10px 20px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+#submit:hover {
+  background-color: #f7c2f9;
 }
  
 

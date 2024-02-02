@@ -73,8 +73,6 @@ export default function AnswerForm({question_options, question_number}){
 
     function onChecked(i){
         let selected = options.filter(o => o.answer_option===i);
-        console.log("the answer you chose is ",selected.pop());
-        //update poll results
         const next_options = options.map(o=>{
                             if(o.answer_option != i){
                                 return o;
@@ -91,11 +89,11 @@ export default function AnswerForm({question_options, question_number}){
 
     const elements = options.map(option =>{
         return <AnswerOption 
-                id={option.answer_option}
-                name={question_number}
-                value={option.answer_option}
-                text={option.text} 
-                onClick={()=>onChecked(option.answer_option)}
+                  id={option.answer_option}
+                  name={question_number}
+                  value={option.answer_option}
+                  text={option.text} 
+                  onClick={()=>onChecked(option.answer_option)}
                 />
     });
 

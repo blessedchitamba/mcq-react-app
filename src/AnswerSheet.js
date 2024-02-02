@@ -1,8 +1,8 @@
 import AnswerForm from "./AnswerForm";
 
-export default function AnswerSheet(){
+export default function AnswerSheet({title}){
     //This component gets json data of multiple MCQ questions and renders AnswerForm components and passes data
-    //State of each question 
+    //State of each question is kept and updated in the answer form 
     const questions = [
         {
             "question": "question_1",
@@ -54,10 +54,18 @@ export default function AnswerSheet(){
     const forms = questions.map(q => {
         return <AnswerForm question_options={q.answers} question_number={q.question} />
     });
-    console.log("forms is ",forms);
+    
     return (
         <>
-            {forms}
+            <div>
+                <h1 id="title">{title}</h1>
+            </div>
+            <div>
+                {forms}
+            </div>
+            <div id="buttonDiv">
+                <button id="submit">Submit All</button>
+            </div>
         </>
     );
 }

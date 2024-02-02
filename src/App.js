@@ -6,7 +6,7 @@ import AnswerSheet from './AnswerSheet';
 function App() {
   return (
     <div className="App">
-      <AnswerSheet />
+      <AnswerSheet title="CS2001 Exam" /> {/*ideally this name shouldnt be a prop but coming from the answer sheet data*/}
     </div>
   );
 }
