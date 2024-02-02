@@ -22,6 +22,9 @@ import {
     BarController
   );
 
+/*
+This class represents a single answer form corresponding to a single exam question i.e. a set of options A,B,C etc. and the question number
+*/
 export default function AnswerForm({question_options, question_number}){
     const[options, setOptions] = useState(question_options); 
     const[checked, setChecked] = useState(false);
