@@ -56,11 +56,11 @@ export default function AnswerSheet({title}){
     //         ]
     //     }
     // ]
-    const[questions, setQuestions] = useState([]);
+    const[questions, setQuestions] = useState(null);
         
-    async function fetchData() {
+    async function fetchAnswerSheet() {
         try {
-            const response = await axios.get("http://localhost:8080/api/v1/answersheet")
+            const response = await axios.get("http://localhost:8080/api/v1/answersheet/CS2002S Exam 2021")
             setQuestions(response.data)
         } catch (error) {
             console.error(error);
@@ -68,12 +68,16 @@ export default function AnswerSheet({title}){
     }
     
     useEffect(() => {
-      fetchData();
+      fetchAnswerSheet();
     },[])
 
-    const forms = questions.map(q => {
-        return <AnswerForm question_options={q.answers} question_number={q.question} />
-    });
+    let forms = null;
+    if (questions) {
+        forms = questions.answer_forms.map(q => {
+            return <AnswerForm question_options={q.answer_options} question_number={q.question_number} />
+        });
+    }
+
     
     return (
         <>
